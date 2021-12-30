@@ -1,0 +1,35 @@
+{
+  "title": "フットスイッチ",
+  "rules": [
+    {
+      "description": "FS: 中 -> JetBrain:実行",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "b"
+          },
+          "to": [
+            {
+              "key_code": "r",
+              "modifiers": ["left_control","left_option"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [{
+                  "vendor_id": 16701,
+                  "product_id": 8455
+              }]
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.jetbrains"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
