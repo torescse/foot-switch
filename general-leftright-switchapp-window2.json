@@ -1,0 +1,81 @@
+{
+  "title": "フットスイッチ",
+  "rules": [
+    {
+      "description": "FS: 左 -> アプリ切り替え + ミッションコントロール表示",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "a"
+          },
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 500,
+            "basic.to_if_held_down_threshold_milliseconds": 500
+          },
+          "to_if_alone": [
+            {
+              "key_code": "tab",
+              "modifiers": ["left_command"]
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "mission_control"
+
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 16701,
+                  "product_id": 8455
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "FS: 右 -> ウィンドウ切り替え(ウィンドウ切り替えをCmd+f1にしておく) + ウィンドウ切り替え逆順",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "c"
+          },
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 500,
+            "basic.to_if_held_down_threshold_milliseconds": 500
+          },
+          "to_if_alone": [
+            {
+              "key_code": "f1",
+              "modifiers": ["left_command"]
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "f1",
+              "modifiers": ["left_control", "left_shift"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 16701,
+                  "product_id": 8455
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
